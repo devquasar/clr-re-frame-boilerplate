@@ -10,8 +10,10 @@
                  ;; depending on a re-frame artifact we add the re-frame source
                  ;; from this repository directly to the :source-paths.
                  [reagent                   "0.10.0"]
+                 [re-frame                   "1.0.0"]
                  [compojure                  "1.6.2"]
                  [net.cgrand/macrovich      "0.2.1"]
+                 [binaryage/devtools         "1.0.0"]
                  [org.clojure/tools.logging "0.4.1"]]
 
   :plugins      [[day8/lein-git-inject "0.0.14"]
@@ -19,8 +21,7 @@
 
   :middleware   [leiningen.git-inject/middleware]
 
-  :source-paths ["../../src"
-                 "src"]
+  :source-paths ["src"]
 
   :clean-targets ^{:protect false} [:target-path
                                     "shadow-cljs.edn"
@@ -30,7 +31,7 @@
 
                 :builds {:client {:target     :browser
                                   :output-dir "resources/public/js"
-                                  :modules    {:client {:init-fn simple.core/run}}
+                                  :modules    {:client {:init-fn boilerplate.core/run}}
                                   :devtools   {:http-root "resources/public"
                                                :http-port 8280}}}}
 
